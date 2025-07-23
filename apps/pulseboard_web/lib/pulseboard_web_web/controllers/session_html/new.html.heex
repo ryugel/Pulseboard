@@ -1,45 +1,51 @@
-<div class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-  <div class="w-full max-w-md bg-white shadow-xl rounded-xl p-8 space-y-6">
-    <div class="text-center">
-      <h2 class="text-2xl font-bold text-zinc-800">Sign in to your account</h2>
-      <p class="mt-2 text-sm text-zinc-600">Welcome back! Please enter your credentials.</p>
+<div class="min-h-screen flex items-start justify-center bg-[#111827] text-white px-4 pt-24">
+  <div class="w-full max-w-md space-y-6 bg-[#1f2937] rounded-xl shadow-xl p-8 border border-gray-700">
+    <div class="space-y-2 text-center">
+      <h1 class="text-3xl font-bold">Welcome back</h1>
+      <p class="text-gray-400">Log in to your Pulseboard account</p>
     </div>
 
-    <.form for={%{}} as={:user} action={~p"/login"} method="post" class="space-y-6">
+    <.form for={%{}} as={:user} action={~p"/login"} method="post" class="space-y-5">
       <div>
-        <.label for="user_email">Email address</.label>
-        <.input
+        <label for="user_email" class="block text-sm font-medium text-gray-300">Email</label>
+        <input
           name="user[email]"
           id="user_email"
           type="email"
-          value=""
           placeholder="you@example.com"
           required
+          class="mt-1 w-full bg-[#111827] text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
       <div>
-        <.label for="user_password">Password</.label>
-        <.input
+        <label for="user_password" class="block text-sm font-medium text-gray-300">Password</label>
+        <input
           name="user[password]"
           id="user_password"
           type="password"
-          value=""
           placeholder="••••••••"
           required
+          class="mt-1 w-full bg-[#111827] text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
-      <div class="pt-2">
-        <.button class="w-full">Log in</.button>
+      <div class="flex items-center justify-between text-sm text-gray-400">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" name="remember_me" class="rounded border-gray-600 bg-[#111827] text-indigo-500 focus:ring-indigo-500" />
+          Remember me
+        </label>
+        <a href="#" class="hover:underline text-gray-300">Forgot password?</a>
       </div>
+
+      <button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 transition text-white font-semibold py-2 rounded-md shadow-md">
+        Log in
+      </button>
     </.form>
 
-    <div class="text-sm text-center text-zinc-600">
-      <span>Don't have an account?</span>
-      <.link navigate={~p"/register"} class="text-zinc-900 hover:underline font-semibold">
-        Sign up
-      </.link>
-    </div>
+    <p class="text-center text-sm text-gray-400">
+      Don’t have an account?
+      <a href="#" class="text-indigo-400 font-semibold hover:underline">Register now</a>
+    </p>
   </div>
 </div>

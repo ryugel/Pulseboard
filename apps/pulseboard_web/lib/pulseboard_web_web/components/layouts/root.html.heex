@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title><%= assigns[:page_title] || "Pulseboard" %></title>
   <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-  <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
 </head>
-<body>
-  <%= @inner_content %>
+<body class="min-h-screen bg-[#111827] text-white font-sans antialiased">
+  <header class="w-full px-8 py-6 bg-[#111827] shadow-md border-b border-gray-800 flex items-center justify-between">
+    <div class="text-2xl font-bold tracking-wide text-white">
+      Pulseboard
+    </div>
+    <nav class="space-x-6 text-sm text-gray-400 hidden sm:flex">
+      <a href="#" class="hover:text-white transition">Docs</a>
+      <a href="#" class="hover:text-white transition">Pricing</a>
+      <a href="#" class="hover:text-white transition">Contact</a>
+    </nav>
+  </header>
+
+  <main class="px-6 py-10">
+    <%= @inner_content %>
+  </main>
 </body>
 </html>
