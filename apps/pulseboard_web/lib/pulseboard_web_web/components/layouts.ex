@@ -10,5 +10,7 @@ defmodule PulseboardWebWeb.Layouts do
   """
   use PulseboardWebWeb, :html
 
+   import Phoenix.HTML.Form
+
   embed_templates "layouts/*"
 end
