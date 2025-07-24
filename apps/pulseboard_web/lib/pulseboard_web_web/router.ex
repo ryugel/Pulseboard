@@ -20,6 +20,8 @@ defmodule PulseboardWebWeb.Router do
     get "/", PageController, :home
     get "/login", SessionController, :new
     post "/login", SessionController, :create
+    get "/register", SessionController, :register
+    post "/register", SessionController, :create_account
     get "/dashboard", DashboardController, :index
   end
 

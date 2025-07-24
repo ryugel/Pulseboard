@@ -74,3 +74,12 @@ import_config "#{config_env()}.exs"
 #       format: "$date $time [$level] $metadata$message\n",
 #       metadata: [:user_id]
 #
+
+  config :pulseboard_core, PulseboardCore.Repo,
+ username: System.get_env("PGUSER"),
+password: System.get_env("PGPASS"),
+database: System.get_env("PGDB"),
+hostname: System.get_env("PGHOST") || "localhost",
+  port: 5432,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10

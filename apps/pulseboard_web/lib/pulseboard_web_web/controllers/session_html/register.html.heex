@@ -1,0 +1,55 @@
+<div class="min-h-screen bg-[#111827] text-white px-4 pt-24 sm:pt-32">
+  <div class="max-w-md mx-auto space-y-8">
+    <div class="text-center space-y-2">
+      <h1 class="text-4xl font-extrabold tracking-tight">Create your account</h1>
+      <p class="text-gray-400 text-sm">Sign up to start using Pulseboard</p>
+    </div>
+
+    <.form for={%{}} as={:user} action={~p"/register"} method="post" class="space-y-5 bg-[#1f2937] p-6 rounded-xl shadow-xl">
+      <div>
+        <label for="user_email" class="block text-sm font-medium text-gray-300">Email</label>
+        <input
+          name="user[email]"
+          id="user_email"
+          type="email"
+          placeholder="you@example.com"
+          required
+          class="mt-1 w-full bg-[#111827] text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div>
+        <label for="user_password" class="block text-sm font-medium text-gray-300">Password</label>
+        <input
+          name="user[password]"
+          id="user_password"
+          type="password"
+          placeholder="••••••••"
+          required
+          class="mt-1 w-full bg-[#111827] text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <div>
+        <label for="user_password_confirmation" class="block text-sm font-medium text-gray-300">Confirm Password</label>
+        <input
+          name="user[password_confirmation]"
+          id="user_password_confirmation"
+          type="password"
+          placeholder="••••••••"
+          required
+          class="mt-1 w-full bg-[#111827] text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+
+      <button type="submit" class="w-full bg-indigo-500 text-white font-semibold py-2 rounded-md hover:bg-indigo-400 transition">
+        Sign Up
+      </button>
+    </.form>
+
+    <p class="text-center text-sm text-gray-400">
+      Already have an account?
+      <a href="/login" class="text-indigo-400 font-medium hover:underline">Log in</a>
+    </p>
+  </div>
+</div>

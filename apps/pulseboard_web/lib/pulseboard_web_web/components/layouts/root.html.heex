@@ -22,5 +22,19 @@
     <%= @inner_content %>
   </main>
 
+<footer class="bg-[#0f172a] text-gray-400 text-sm mt-12 px-6 py-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <div class="text-center md:text-left">
+      © <%= Date.utc_today().year %> Pulseboard. All rights reserved.
+    </div>
+
+    <div class="flex space-x-4">
+      <a href="#" class="hover:text-white transition">Privacy Policy</a>
+      <a href="#" class="hover:text-white transition">Terms of Service</a>
+      <a href="#" class="hover:text-white transition">Contact</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
