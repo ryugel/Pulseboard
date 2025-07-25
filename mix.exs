@@ -15,7 +15,7 @@ defmodule Pulseboard.MixProject do
   # the apps folder.
   #
   # Run "mix help deps" for examples and options.
-  defp deps do
-    []
-  end
+  # defp deps do
+  # []
+  #end
 end
