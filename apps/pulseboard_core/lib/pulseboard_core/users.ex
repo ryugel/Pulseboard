@@ -31,17 +31,17 @@ defmodule PulseboardCore.Users do
     User.changeset(user, attrs)
   end
 
-    def authenticate_user(email, password) do
-  case get_user_by_email(email) do
-    nil ->
-      {:error, :invalid_credentials}
-
-    user ->
-      if Bcrypt.verify_pass(password, user.hashed_password) do
-        {:ok, user}
-      else
+  def authenticate_user(email, password) do
+    case get_user_by_email(email) do
+      nil ->
         {:error, :invalid_credentials}
-      end
+
+      user ->
+        if Bcrypt.verify_pass(password, user.hashed_password) do
+          {:ok, user}
+        else
+          {:error, :invalid_credentials}
+        end
+    end
   end
-end
 end

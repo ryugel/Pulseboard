@@ -3,10 +3,10 @@ defmodule PulseboardCore.Schemas.Project do
   import Ecto.Changeset
 
   schema "projects" do
-    field :name, :string
-    field :public_key, :string
+    field(:name, :string)
+    field(:public_key, :string)
 
-    belongs_to :user, PulseboardCore.Schemas.User
+    belongs_to(:user, PulseboardCore.Schemas.User)
 
     timestamps()
   end

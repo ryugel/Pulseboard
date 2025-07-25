@@ -2,8 +2,12 @@ defmodule PulseboardWebWeb.PageController do
   use PulseboardWebWeb, :controller
 
   def home(conn, _params) do
-    # The home page is often custom made,
-    # so skip the default app layout.
-    render(conn, :home, layout: false)
+    case conn.assigns[:current_user] do
+      nil ->
+        render(conn, :home)
+
+      _user ->
+        redirect(conn, to: "/dashboard")
+    end
   end
 end

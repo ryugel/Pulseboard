@@ -5,7 +5,11 @@ defmodule PulseboardWebWeb.SessionController do
   alias PulseboardCore.Schemas.User
 
   def new(conn, _params) do
-    render(conn, :new, changeset: Users.change_user(%User{}))
+    if conn.assigns[:current_user] do
+      redirect(conn, to: "/dashboard")
+    else
+      render(conn, :new, changeset: Users.change_user(%User{}))
+    end
   end
 
   def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
@@ -24,8 +28,11 @@ defmodule PulseboardWebWeb.SessionController do
   end
 
   def register(conn, _params) do
-    changeset = Users.change_user(%User{})
-    render(conn, :register, changeset: changeset)
+    if conn.assigns[:current_user] do
+      redirect(conn, to: "/dashboard")
+    else
+      render(conn, :register, changeset: Users.change_user(%User{}))
+    end
   end
 
   def create_account(conn, %{"user" => user_params}) do
@@ -42,5 +49,11 @@ defmodule PulseboardWebWeb.SessionController do
         |> put_flash(:error, "Could not create account")
         |> render(:register, changeset: changeset)
     end
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: "/")
   end
 end

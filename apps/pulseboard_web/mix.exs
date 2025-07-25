@@ -20,12 +20,12 @@ defmodule PulseboardWeb.MixProject do
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
- def application do
-  [
-    mod: {PulseboardWeb.Application, []},
-    extra_applications: [:logger, :runtime_tools, :pulseboard_core]
-  ]
-end
+  def application do
+    [
+      mod: {PulseboardWeb.Application, []},
+      extra_applications: [:logger, :runtime_tools, :phoenix_html, :pulseboard_core]
+    ]
+  end
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -39,6 +39,7 @@ end
       {:phoenix, "~> 1.7.21"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_html_helpers, "~> 1.0"},
       {:phoenix_live_view, "~> 1.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},

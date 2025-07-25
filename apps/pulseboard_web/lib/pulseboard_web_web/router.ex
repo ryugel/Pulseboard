@@ -1,4 +1,5 @@
 defmodule PulseboardWebWeb.Router do
+  alias Hex.API.Auth
   use PulseboardWebWeb, :router
 
   pipeline :browser do
@@ -8,6 +9,7 @@ defmodule PulseboardWebWeb.Router do
     plug :put_root_layout, {PulseboardWebWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PulseboardWebWeb.Plugs.Auth
   end
 
   pipeline :api do
@@ -23,6 +25,7 @@ defmodule PulseboardWebWeb.Router do
     get "/register", SessionController, :register
     post "/register", SessionController, :create_account
     get "/dashboard", DashboardController, :index
+    delete "/logout", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.

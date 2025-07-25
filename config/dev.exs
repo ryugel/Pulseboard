@@ -7,7 +7,6 @@ import Config
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
 
-
 config :pulseboard_web, PulseboardWebWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
@@ -72,13 +71,11 @@ config :phoenix_live_view,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true
 
-
-
-  config :pulseboard_core, PulseboardCore.Repo,
- username: System.get_env("PGUSER"),
-password: System.get_env("PGPASS"),
-database: System.get_env("PGDB"),
-hostname: System.get_env("PGHOST") || "localhost",
+config :pulseboard_core, PulseboardCore.Repo,
+  username: System.get_env("PGUSER"),
+  password: System.get_env("PGPASS"),
+  database: System.get_env("PGDB"),
+  hostname: System.get_env("PGHOST") || "localhost",
   port: 5432,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

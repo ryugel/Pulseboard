@@ -26,9 +26,9 @@ defmodule PulseboardCore.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-    {:ecto_sql, "~> 3.11"},
-    {:postgrex, ">= 0.0.0"},
-    {:bcrypt_elixir, "~> 3.0"}
+      {:ecto_sql, "~> 3.11"},
+      {:postgrex, ">= 0.0.0"},
+      {:bcrypt_elixir, "~> 3.0"}
     ]
   end
 end

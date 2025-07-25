@@ -78,20 +78,21 @@ defmodule PulseboardWebWeb do
     end
   end
 
- defp html_helpers do
-  quote do
-    import Phoenix.HTML
-    import Phoenix.HTML.Form
-    import Phoenix.Component
-    import Phoenix.Controller,
-      only: [get_csrf_token: 0, view_module: 1, view_template: 1]
+  defp html_helpers do
+    quote do
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+      import Phoenix.Component
 
-    import PulseboardWebWeb.CoreComponents
-    alias Phoenix.LiveView.JS
+      import Phoenix.Controller,
+        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
 
-    unquote(verified_routes())
+      import PulseboardWebWeb.CoreComponents
+      alias Phoenix.LiveView.JS
+
+      unquote(verified_routes())
+    end
   end
-end
 
   def verified_routes do
     quote do
