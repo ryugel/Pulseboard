@@ -1,4 +1,4 @@
-<%= if Enum.empty?(@projects) do %> 
+<%= if @metrics.total_projects == 0 do %>
   <div class="min-h-screen bg-[#111827] text-white px-6 py-20 flex items-center justify-center">
     <div class="text-center space-y-6 max-w-md">
       <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto w-28 h-28 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
