@@ -10,4 +10,8 @@ defmodule PulseboardCore.Projects do
     from(p in Project, where: p.user_id == ^user_id)
     |> Repo.aggregate(:count, :id)
   end
+
+  def change_project(%Project{} = project) do
+  Project.changeset(project, %{})
+end
 end

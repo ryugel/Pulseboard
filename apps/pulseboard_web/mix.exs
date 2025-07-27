@@ -56,7 +56,9 @@ defmodule PulseboardWeb.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:pulseboard_core, in_umbrella: true}
+      {:pulseboard_core, in_umbrella: true},
+       {:phoenix_ecto, "~> 4.4"},
+    {:ecto, "~> 3.10"}
     ]
   end
 

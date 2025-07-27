@@ -1,0 +1,43 @@
+<.form 
+  for={@form} 
+  action={~p"/projects"} 
+  as={:project} 
+  class="space-y-8 bg-gray-900 p-8 rounded-2xl shadow-2xl w-full max-w-xl mx-auto border border-gray-800"
+>
+  <h2 class="text-3xl font-bold text-center text-white tracking-tight">Create a New Project</h2>
+  <p class="text-sm text-gray-400 text-center">Fill in the details below to get started</p>
+
+  <div>
+    <label for="project_name" class="block text-sm font-medium text-gray-300 mb-1">
+      Project Name
+    </label>
+    <.input 
+      field={@form[:name]} 
+      type="text" 
+      id="project_name" 
+      placeholder="e.g. Pulseboard Tracker"
+      class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-150 ease-in-out"
+    />
+  </div>
+
+  <div>
+    <label for="project_key" class="block text-sm font-medium text-gray-300 mb-1">
+      Public Key
+    </label>
+    <.input 
+      field={@form[:public_key]} 
+      type="text" 
+      id="project_key" 
+      placeholder="pk_live_..."
+      class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none transition duration-150 ease-in-out"
+    />
+  </div>
+
+  <div>
+    <.button 
+      class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3 px-4 rounded-md transition duration-150 ease-in-out"
+    >
+      Create Project
+    </.button>
+  </div>
+</.form>

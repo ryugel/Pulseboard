@@ -3,10 +3,9 @@ defmodule PulseboardCore.Schemas.Project do
   import Ecto.Changeset
 
   schema "projects" do
-    field(:name, :string)
-    field(:public_key, :string)
-
-    belongs_to(:user, PulseboardCore.Schemas.User)
+    field :name, :string
+    field :public_key, :string
+    belongs_to :user, PulseboardCore.Schemas.User
 
     timestamps()
   end
@@ -15,6 +14,5 @@ defmodule PulseboardCore.Schemas.Project do
     project
     |> cast(attrs, [:name, :public_key, :user_id])
     |> validate_required([:name, :public_key, :user_id])
-    |> unique_constraint(:public_key)
   end
 end

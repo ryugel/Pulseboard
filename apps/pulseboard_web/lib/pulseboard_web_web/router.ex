@@ -1,5 +1,4 @@
 defmodule PulseboardWebWeb.Router do
-  alias Hex.API.Auth
   use PulseboardWebWeb, :router
 
   pipeline :browser do
@@ -9,11 +8,15 @@ defmodule PulseboardWebWeb.Router do
     plug :put_root_layout, {PulseboardWebWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug PulseboardWebWeb.Plugs.Auth
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :protected do
+    plug :fetch_session
+    plug PulseboardWebWeb.Plugs.Auth
   end
 
   scope "/", PulseboardWebWeb do
@@ -24,10 +27,17 @@ defmodule PulseboardWebWeb.Router do
     post "/login", SessionController, :create
     get "/register", SessionController, :register
     post "/register", SessionController, :create_account
-    get "/dashboard", DashboardController, :index
-    delete "/logout", SessionController, :delete
   end
 
+  scope "/", PulseboardWebWeb do
+    pipe_through [:browser, :protected]
+
+    get "/dashboard", DashboardController, :index
+    delete "/logout", SessionController, :delete
+
+    get "/projects/new", ProjectController, :new
+    post "/projects", ProjectController, :create
+  end
   # Other scopes may use custom stacks.
   # scope "/api", PulseboardWebWeb do
   #   pipe_through :api
