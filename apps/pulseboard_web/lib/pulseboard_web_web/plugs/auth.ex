@@ -13,19 +13,24 @@ defmodule PulseboardWebWeb.Plugs.Auth do
   def init(opts), do: opts
 
   def call(conn, _opts) do
-    user_id = get_session(conn, :user_id)
-
-    cond do
-      conn.assigns[:current_user] ->
+    case {conn.assigns[:current_user], get_session(conn, :user_id)} do
+      {current_user, _} when not is_nil(current_user) ->
         conn
 
-      user = user_id && Users.get_user!(user_id) ->
-        assign(conn, :current_user, user)
+      {_, user_id} when not is_nil(user_id) ->
+        case Users.get_user(user_id) do
+          nil -> redirect_to_login(conn)
+          user -> assign(conn, :current_user, user)
+        end
 
-      true ->
-        conn
-        |> redirect(to: ~p"/login")
-        |> halt()
+      _ ->
+        redirect_to_login(conn)
     end
+  end
+
+  defp redirect_to_login(conn) do
+    conn
+    |> redirect(to: ~p"/login")
+    |> halt()
   end
 end

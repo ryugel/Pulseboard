@@ -19,8 +19,12 @@ defmodule PulseboardWebWeb.Router do
     plug PulseboardWebWeb.Plugs.Auth
   end
 
+  pipeline :redirect_authenticated_user do
+    plug PulseboardWebWeb.Plugs.RedirectAuthenticatedUser
+  end
+
   scope "/", PulseboardWebWeb do
-    pipe_through :browser
+    pipe_through [:browser, :redirect_authenticated_user]
 
     get "/", PageController, :home
     get "/login", SessionController, :new
